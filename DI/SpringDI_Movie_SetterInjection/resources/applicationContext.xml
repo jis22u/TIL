@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean class="com.ssafy.ws.Comic" id="comic"></bean>
+	<bean class="com.ssafy.ws.Action" id="action"></bean>
+	
+	<!-- 의존성 주입 2. 설정자 주입 -->
+	<!-- 일단 기본 생성자를 불러와서 빈 객체를 만들어옴 -->
+	<bean class="com.ssafy.ws.Audience" id="audience">
+		<property name="movie" ref="comic"></property>
+	</bean>
+	
+	<!-- 기본 생성자로 객체만 만든 것. 의존성 주입이 발생한 것은 아니다 -->
+	<bean class="com.ssafy.ws.Audience" id="audienceConst"></bean>
+</beans>
