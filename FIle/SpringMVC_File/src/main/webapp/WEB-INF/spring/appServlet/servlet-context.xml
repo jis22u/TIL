@@ -33,7 +33,8 @@
 	</beans:bean>
 	
 	<!-- 파일 다운로드를 위해 -->
-	<!-- bean 이름으로 view resolver를 찾아가도록 한다.-->
+	<!-- BeanNameViewResolver는 download( )에서 반환한 view name의 앞글자를 대문자로 바꾸고 
+		  그와 동일한 이름을 가진 Bean을 찾아가도록 한다. -->
 	<beans:bean class="org.springframework.web.servlet.view.BeanNameViewResolver">
 		<beans:property name="order" value="0"></beans:property>
 	</beans:bean>
