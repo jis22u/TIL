@@ -27,7 +27,7 @@
 	<interceptors>
 		<interceptor>
 			<mapping path="/*"/>
-			<!-- 인터셉터를 거칠 페이지 지정 -->
+			<!-- 인터셉터를 거치지 않을 페이지 따로 지정 (login 페이지와 home 페이지)-->
 			<exclude-mapping path="/login"/>
 			<exclude-mapping path="/"/>
 			<beans:ref bean="confirm"/>
