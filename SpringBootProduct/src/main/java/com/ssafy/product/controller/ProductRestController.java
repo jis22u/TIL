@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.RestController;
@@ -50,7 +51,7 @@ public class ProductRestController {
 	@ApiOperation(value = "product 객체를 저장한다.", response = String.class)
 	public ResponseEntity<String> insert(Product product) throws IllegalStateException, IOException {
 		ps.registProduct(product);
-		return new ResponseEntity<>("등록 완료" , HttpStatus.OK);
+		return new ResponseEntity<>("regist" , HttpStatus.OK);
 	}
 
 	
@@ -61,7 +62,7 @@ public class ProductRestController {
 	@ApiOperation(value = "product 객체를 삭제한다.", response = String.class)
 	public ResponseEntity<String> delete(@PathVariable int id) {
 		ps.removeProduct(id);
-		return new ResponseEntity<>("삭제 완료" , HttpStatus.OK);
+		return new ResponseEntity<>("delete" , HttpStatus.OK);
 	}
 	
 	
