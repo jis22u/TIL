@@ -2,14 +2,18 @@ package com.ssafy.ws;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.GenericXmlApplicationContext;
+// 전체흐름
+//1. 메이븐을 통해서 우리 프로젝트에 Spring 라이브러리 세팅
+//2. 스프링 설정파일 만들고 객체(bean) 등록하기
+//3. 스프링 컨테이너 객체 빌드 및 사용
 
 public class MovieTest {
 	public static void main(String[] args) {
-		// 스프링 컨테이너 객체 빌드
+		// 3-1. 스프링 컨테이너 객체 빌드
 		ApplicationContext context 
 		= new GenericXmlApplicationContext("applicationContext.xml");
 		
-		// 컨테이너로부터 객체 얻어오기
+		// 3-2. 컨테이너로부터 내가 사용할 객체 얻어오기
 		// 코믹 영화를 보는 것까지 설정을 마친 audience 객체임
 		Audience audience = context.getBean("audience", Audience.class);
 		audience.seeMovie();
@@ -24,7 +28,7 @@ public class MovieTest {
 //		------------------------------------------------------------------
 		
 		// 퀴즈1. 스프링 컨테이너는 빈 객체들을 언제 만들까?
-		// 정답1. 컨테이너가 만들어질 때 (16번 라인)
+		// 정답1. 컨테이너가 만들어질 때 (14번 라인)
 		
 		// 퀴즈2. 아래와 같이 audience객체를 또 사용한다면, audience 객체가 하나 더 만들어질까?
 		Audience audience2 = context.getBean("audience", Audience.class);

@@ -7,11 +7,12 @@
 	<bean class="com.ssafy.ws.Action" id="action"></bean>
 
 	<!-- 의존성 주입 1. 생성자 주입 -->
+	<!-- 의존성을 주입해야지만 객체가 생성되기 때문에 설정자 주입보다 강력한 의존관계가 있다 -->
 	<bean class="com.ssafy.ws.Audience" id="audience">
 		<constructor-arg name="movie" ref="comic"></constructor-arg>
 	</bean>
 	
-	<!-- 기본 생성자로 객체만 만든 것. 의존성 주입이 발생한 것은 아니다 -->
+	<!-- 기본 생성자로 Bean 객체만 만든 것. 의존성 주입이 발생한 것은 아니다 -->
 	<bean class="com.ssafy.ws.Audience" id="audienceConst"></bean>
 
 </beans>

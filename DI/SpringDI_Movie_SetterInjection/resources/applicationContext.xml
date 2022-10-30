@@ -3,10 +3,15 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 	
+	<!--  2. 스프링 설정파일 만들고 객체(bean) 등록하기	-->
+	<!--  * 스프링 컨테이너에 등록되는 객체를 Bean이라고 한다. -->
+	<!--  * 객체의 생성과 관리는 컨테이너에게 맡긴다. -->
+	
 	
 	<!-- Bean 객체 등록하기 -->
 	<bean class="com.ssafy.ws.Comic" id="comic"></bean>
 	<bean class="com.ssafy.ws.Action" id="action"></bean>
+	
 	
 	<!-- Bean 객체 등록 & 의존관계 설정 -->
 	<!-- 의존성 주입 2. 설정자 주입 -->
@@ -17,6 +22,12 @@
 		<property name="movie" ref="comic"></property>
 	</bean>
 	
+	
 	<!-- 기본 생성자로 객체만 만든 것. 의존성 주입이 발생한 것은 아니다 -->
 	<bean class="com.ssafy.ws.Audience" id="audienceConst"></bean>
 </beans>
+
+
+<!--  1. 메이븐을 통해서 우리 프로젝트에 Spring 라이브러리 세팅
+ 	  2. 스프링 설정파일 만들고 객체(bean) 등록하기 
+	  3. 스프링 컨테이너 객체 빌드 및 사용  -->
