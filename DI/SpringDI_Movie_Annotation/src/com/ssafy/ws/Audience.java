@@ -7,6 +7,7 @@ import org.springframework.stereotype.Component;
 
 @Component	// Bean으로 등록
 public class Audience {
+	// 인터페이스로 느슨한 결합 형태
 	private Movie movie;
 	
 	// 기본 생성자

@@ -5,7 +5,14 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
 	
+	<!--  2. 스프링 설정파일 만들고 객체(bean) 등록하기	-->
+	<!--  * 스프링 컨테이너에 등록되는 객체를 Bean이라고 한다. -->
+	<!--  * 객체의 생성과 관리는 컨테이너에게 맡긴다. -->
 	<!-- component-scan : 지정된 패키지에서 낙인이 찍힌 클래스를 모두 bean으로 등록한다. -->
 	<context:component-scan base-package="com.ssafy.ws"></context:component-scan>
 
 </beans>
+
+<!--  1. 메이븐을 통해서 우리 프로젝트에 Spring 라이브러리 세팅
+ 	  2. 스프링 설정파일 만들고 객체(bean) 등록하기 
+	  3. 스프링 컨테이너 객체 빌드 및 사용  -->

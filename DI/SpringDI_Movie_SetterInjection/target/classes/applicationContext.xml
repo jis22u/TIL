@@ -2,12 +2,17 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
-
+	
+	
+	<!-- Bean 객체 등록하기 -->
 	<bean class="com.ssafy.ws.Comic" id="comic"></bean>
 	<bean class="com.ssafy.ws.Action" id="action"></bean>
 	
+	<!-- Bean 객체 등록 & 의존관계 설정 -->
 	<!-- 의존성 주입 2. 설정자 주입 -->
-	<!-- 일단 기본 생성자를 불러와서 빈 객체를 만들어옴 -->
+	<!-- 일단 기본 생성자를 불러와서 설정자 주입까지 한 후 Bean 객체를 만듦 -->
+	<!-- name은 setter 메서드에서 set을 뺀 movie -->
+	<!-- 기본 데이터 타입이라면 value, 스프링 컨테이너의 Bean객체라면 ref -->
 	<bean class="com.ssafy.ws.Audience" id="audience">
 		<property name="movie" ref="comic"></property>
 	</bean>
