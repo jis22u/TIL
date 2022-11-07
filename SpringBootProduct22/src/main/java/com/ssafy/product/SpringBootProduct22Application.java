@@ -7,6 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
@@ -17,6 +18,7 @@ import org.springframework.web.servlet.view.JstlView;
 // 또한 WebMvcConfigurer implements 하기
 
 @SpringBootApplication
+@EnableWebMvc
 @MapperScan(basePackages = "com.ssafy.product.model.dao")
 public class SpringBootProduct22Application implements WebMvcConfigurer {
 

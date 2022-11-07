@@ -13,7 +13,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 
 // 테스트 URL : http://localhost:8080/swagger-ui/index.html
-@EnableSwagger2
+
 @Configuration
 public class SwaggerConfig {
 
