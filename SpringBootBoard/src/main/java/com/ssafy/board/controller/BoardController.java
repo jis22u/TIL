@@ -2,6 +2,7 @@ package com.ssafy.board.controller;
 
 import java.util.List;
 
+import org.mybatis.logging.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,6 +16,8 @@ import com.ssafy.board.model.service.BoardService;
 
 @Controller
 public class BoardController {
+//	private final Logger logger = LoggerFactory.getLogger(this.getClass());
+	
 	
 	@Autowired
 	private BoardService boardService;
