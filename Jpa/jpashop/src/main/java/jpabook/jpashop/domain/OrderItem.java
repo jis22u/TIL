@@ -19,7 +19,7 @@ public class OrderItem {
     @Column(name = "ITEM_ID")
     private Long itemId;
 
-    private int orderPrice;
+    private int orderPrice; // order_price (DB의 컬럼명 정책, springboot의 기본설정)
     private int count;
 
     public Long getId() {

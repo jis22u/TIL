@@ -11,8 +11,19 @@ public class Order {
     @Column(name = "ORDER_ID")
     private Long id;
 
+    // 관계형 DB에 맞춘 설계
     @Column(name = "MEMBER_ID")
     private Long memberId;
+    // 객체 지향스러운 설계
+    private Member member;
+
+    public Member getMember() {
+        return member;
+    }
+
+//    public void setMember(Member member) {
+//        this.member = member;
+//    }
 
     private LocalDateTime orderDate;
 

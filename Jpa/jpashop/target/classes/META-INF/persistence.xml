@@ -15,7 +15,6 @@
             <property name="hibernate.show_sql" value="true"/>
             <property name="hibernate.format_sql" value="true"/>
             <property name="hibernate.use_sql_comments" value="true"/>
-            <!-- 테이블이 없다면 생성해줌 -->
             <property name="hibernate.hbm2ddl.auto" value="create" />
         </properties>
     </persistence-unit>
