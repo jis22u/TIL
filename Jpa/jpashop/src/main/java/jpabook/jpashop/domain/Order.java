@@ -17,8 +17,9 @@ public class Order {
     @JoinColumn(name = "MEMBER_ID")
     private Member member;
 
-    // Order 입장에서 OrderItem을 가지고 있는 양방향 관계는 비지니스적으로 유리
-    // 연관관계의 주인이 아닌 것은 조회만 가능하고, 값을 대입해도 DB에 반영되는건 없다.
+    // Order 입장에서 OrderItem을 가지고 있는 양방향 관계는 비지니스적으로 유리(Order에서 OrderItem에 접근하고 싶은 것)
+    // 연관관계의 주인이 아닌 것은 읽기만 가능하고, 값을 대입해도 DB에 반영되는건 없다.
+    // mappedBy = "order" 의 order는 OrderItem 클래스의 order 필드를 가리킨다.
     // 최대한 단방향 관계로 설계 하는 것을 추천(단, 실무에선 때에 따라 양방향이 필요하기도..)
     @OneToMany(mappedBy = "order")
     private List<OrderItem> orderItems =  new ArrayList<>();
