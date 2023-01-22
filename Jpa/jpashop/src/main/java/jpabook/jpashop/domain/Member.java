@@ -1,6 +1,8 @@
 package jpabook.jpashop.domain;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class Member {
@@ -12,6 +14,11 @@ public class Member {
     private String city;
     private String street;
     private String zipcode;
+
+    // Member-Order 양방향 관계를 맺고자 하면,
+    // (그러나 추천하지는 않는다. ORDERS 테이블에서 memberId의 컬럼으로 충분히 조회가능하기 때문.)
+    @OneToMany(mappedBy = "member")
+    private List<Order> orders = new ArrayList<>();
 
     public Long getId() {
         return id;

@@ -2,6 +2,8 @@ package jpabook.jpashop.domain;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "ORDERS")
@@ -11,51 +13,54 @@ public class Order {
     @Column(name = "ORDER_ID")
     private Long id;
 
-    // 관계형 DB에 맞춘 설계
-    @Column(name = "MEMBER_ID")
-    private Long memberId;
-    // 객체 지향스러운 설계
+    @ManyToOne
+    @JoinColumn(name = "MEMBER_ID")
     private Member member;
 
-    public Member getMember() {
-        return member;
-    }
-
-//    public void setMember(Member member) {
-//        this.member = member;
-//    }
+    // Order 입장에서 OrderItem을 가지고 있는 양방향 관계는 비지니스적으로 유리
+    // 연관관계의 주인이 아닌 것은 조회만 가능하고, 값을 대입해도 DB에 반영되는건 없다.
+    // 최대한 단방향 관계로 설계 하는 것을 추천(단, 실무에선 때에 따라 양방향이 필요하기도..)
+    @OneToMany(mappedBy = "order")
+    private List<OrderItem> orderItems =  new ArrayList<>();
 
     private LocalDateTime orderDate;
 
     @Enumerated(EnumType.STRING)
     private OrderStatus status;
 
+    // 양방향 연관관계 적용시 편의성을 위해 추가
+    public void addOrderItem(OrderItem orderItem) {
+        orderItems.add(orderItem);
+        orderItem.setOrder(this);
+    }
+
+
     public Long getId() {
         return id;
-    }
-
-    public Long getMemberId() {
-        return memberId;
-    }
-
-    public LocalDateTime getOrderDate() {
-        return orderDate;
-    }
-
-    public OrderStatus getStatus() {
-        return status;
     }
 
     public void setId(Long id) {
         this.id = id;
     }
 
-    public void setMemberId(Long memberId) {
-        this.memberId = memberId;
+    public Member getMember() {
+        return member;
+    }
+
+    public void setMember(Member member) {
+        this.member = member;
+    }
+
+    public LocalDateTime getOrderDate() {
+        return orderDate;
     }
 
     public void setOrderDate(LocalDateTime orderDate) {
         this.orderDate = orderDate;
+    }
+
+    public OrderStatus getStatus() {
+        return status;
     }
 
     public void setStatus(OrderStatus status) {
