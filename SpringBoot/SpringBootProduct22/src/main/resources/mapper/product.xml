@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ssafy.product.model.dao.ProductDao">
+
+
+	<!-- 전체 조회 -->
+	<select id="selectAll" resultType="Product">
+		SELECT p_id, p_name, p_price, p_description
+		FROM product
+	</select>
+	
+	<!-- 하나 조회 -->
+	<select id="selectOne" parameterType="int" resultType="Product">
+		SELECT *
+		FROM product
+		WHERE p_id = #{p_id}
+	</select>
+	
+	<insert id="insertProduct" parameterType="Product" keyProperty="p_id" useGeneratedKeys="true">
+		INSERT INTO product (p_name, p_price, p_description)
+		VALUES (#{p_name}, #{p_price}, #{p_description})
+	</insert>
+
+	<update id="updateProduct" parameterType="Product">
+		UPDATE product
+		SET p_price = #{p_price}, p_description = #{p_description}
+		WHERE p_id = #{p_id} 
+	</update>	
+
+	<delete id="deleteProduct" parameterType="int">
+		DELETE FROM product
+		WHERE p_id = #{p_id}
+	</delete>
+
+	<select id="search" resultType="Product" parameterType="SearchCondition">
+		SELECT * 
+		FROM product
+		<!-- 어떤기준으로 검색을 할거냐  -->
+		<if test="key != 'none'">
+			WHERE ${key} like concat('%', #{word}, '%')
+		</if>
+		<!-- 어떤기준으로 어느방향으로 정렬할거냐  -->
+		<if test="orderBy != 'none'">
+			order by ${orderBy} ${orderByDir}
+		</if>
+	</select>
+	
+</mapper>
