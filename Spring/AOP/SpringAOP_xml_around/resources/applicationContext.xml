@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd">
+	
+	<!-- Target 객체를 인터페이스뿐 아니라 구체적인 클래스도 가능하게 한다. -->
+	<!-- 이처럼 CGLIB 프록시를 사용하면 성능면에서도 빠르다 -->
+	<aop:aspectj-autoproxy proxy-target-class="true"></aop:aspectj-autoproxy>
+	
+	<!-- 구현한 클래스들(Aspect 포함) Bean객체로 등록 -->
+	<bean class="com.ssafy.ws.Audience" id="audience"></bean>
+	<bean class="com.ssafy.ws.MovieAspect" id="movieAspect"></bean>
+	
+	<aop:config>
+		<!-- Pointcut 지정: 조인포인트에 대한 표현식, 포인트 컷의 이름 -->
+		<aop:pointcut expression="execution(public int com.ssafy.ws.*.doSomething())" id="mypt"/>
+		<!-- Pointcut에 Aspect들을 Advice 지정 -->
+		<aop:aspect ref="movieAspect">
+			<aop:around method="around" pointcut-ref="mypt"/>
+		</aop:aspect>
+	</aop:config>
+	
+</beans>
