@@ -1,17 +1,42 @@
 ﻿<template>
 	<div>
-		<h2>게시글 상세</h2>
+		<h2>제목</h2>
+		<p>내용</p>
+		<p class="text-muted">2023-04-27</p>
 		<hr class="my-4" />
-		<!-- 동적 라우팅 시 세미콜론 뒤에 오는 값(파라미터)을 route 객체의 params라는 것으로 받음 -->
-		<!-- http://localhost:5173/posts/dkjflk -->
-		<p>params: {{ $route.params }}</p>
-		<!-- http://localhost:5173/posts/dkjflk?searchText=Vue3바이블 -->
-		<p>query : {{ $route.query.searchText }}</p>
-		<!-- http://localhost:5173/posts/dkjflk#hashvalue -->
-		<p>hash : {{ $route.hash }}</p>
+		<div class="row">
+			<div class="col-auto">
+				<button class="btn btn-outline-dark">이전글</button>
+			</div>
+			<div class="col-auto">
+				<button class="btn btn-outline-dark">다음글</button>
+			</div>
+			<div class="col-auto me-auto"></div>
+			<div class="col-auto">
+				<button class="btn btn-outline-dark" @click="goListPage">목록</button>
+			</div>
+			<div class="col-auto">
+				<button class="btn btn-outline-primary" @click="goEditPage">
+					수정
+				</button>
+			</div>
+			<div class="col-auto">
+				<button class="btn btn-outline-danger">삭제</button>
+			</div>
+		</div>
 	</div>
 </template>
 
-<script setup></script>
+<script setup>
+import { useRouter, useRoute } from 'vue-router';
+
+const route = useRoute();
+const router = useRouter();
+
+const id = route.params.id;
+
+const goListPage = () => router.push({ name: 'PostList' });
+const goEditPage = () => router.push({ name: 'PostEdit', params: { id } });
+</script>
 
 <style lang="scss" scoped></style>

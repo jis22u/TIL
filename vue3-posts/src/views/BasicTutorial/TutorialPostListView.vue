@@ -32,12 +32,21 @@ fetchPosts();
 
 // 상세조회 페이지로 이동
 const goPage = id => {
+	// 1) 리터럴 문자열 경로로 이동
+	// router.push(`/posts/${id}`);
+
 	// 2) 객체(이름을 가지는 라우트)로 이동
+	//    아래와 같이 path 를 지정하면 url 창에 아래와 같은 주소가 찍힌다. (상세페이지로 이동할 때)
+	//    http://localhost:5173/posts/1?searchText=false#world
 	router.push({
 		name: 'PostDetail',
 		params: {
 			id,
 		},
+		query: {
+			searchText: 'false',
+		},
+		hash: '#world',
 	});
 };
 </script>
