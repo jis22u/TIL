@@ -12,11 +12,17 @@
 				></PostItem>
 			</div>
 		</div>
+		<hr class="my-4" />
+		<AppCard>
+			<PostDetailView :id="1"></PostDetailView>
+		</AppCard>
 	</div>
 </template>
 
 <script setup>
 import PostItem from '@/components/posts/PostItem.vue';
+import PostDetailView from '@/views/posts/PostDetailView.vue';
+import AppCard from '@/components/AppCard.vue';
 import { getPosts } from '@/api/posts';
 import { ref } from 'vue';
 import { useRouter } from 'vue-router';
@@ -25,10 +31,10 @@ const router = useRouter();
 const posts = ref([]);
 
 // post 객체 가져오기
-const fetchPosts = () => {
+const fetchPost = () => {
 	posts.value = getPosts();
 };
-fetchPosts();
+fetchPost();
 
 // 상세조회 페이지로 이동
 const goPage = id => {
