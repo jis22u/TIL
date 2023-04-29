@@ -31,15 +31,27 @@ const router = useRouter()
 const posts = ref([])
 
 // post 객체 가져오기
+// 1) async await 문법으로
 const fetchPost = async () => {
-  try {
-    const { data } = await getPosts()
-    posts.value = data
-  } catch {
-    console.error(error)
-  }
+  // 구조 분해 할당 방법1
+  // response 안에 data만 가져옴
+  const { data } = await getPosts()
+  posts.value = data
+  // 구조 분해 할당 방법2
+  //   ({ data: posts.value } = await getPosts())
 }
 fetchPost()
+
+// 2) promise 문법으로
+// const fetchPost = () => {
+//   getPosts()
+//     .then((response) => {
+//       console.log('response: ', response)
+//     })
+//     .catch((error) => {
+//       console.log('error: ', error)
+//     })
+// }
 
 // 상세조회 페이지로 이동
 const goPage = (id) => {
